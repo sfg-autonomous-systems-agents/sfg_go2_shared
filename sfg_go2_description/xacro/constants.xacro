@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- offset of the thigh along the x and y axes relative to the base -->
+    <xacro:property name="hip_offset_x" value="0.1934" />
+    <xacro:property name="hip_offset_y" value="0.0465" />
+
+    <!-- offset of the thigh along y axis relative to the hip -->
+    <xacro:property name="thigh_offset_y" value="0.0955" />
+
+    <!-- lengths of leg components -->
+    <xacro:property name="thigh_length" value="0.213" />
+    <xacro:property name="calf_length" value="0.213" />
+
+    <!-- hip joint limits -->
+    <xacro:property name="hip_position_max" value="1.0472" />
+    <xacro:property name="hip_position_min" value="-1.0472" />
+    <xacro:property name="hip_velocity_max" value="30.1" />
+    <xacro:property name="hip_torque_max" value="23.7" />
+
+    <!-- thigh joint limits -->
+    <xacro:property name="thigh_position_max" value="3.4907" />
+    <xacro:property name="thigh_position_min" value="-1.5708" />
+    <xacro:property name="thigh_velocity_max" value="30.1" />
+    <xacro:property name="thigh_torque_max" value="23.7" />
+
+    <!-- calf joint limits -->
+    <xacro:property name="calf_position_max" value="-0.83776" />
+    <xacro:property name="calf_position_min" value="-2.7227" />
+    <xacro:property name="calf_velocity_max" value="20.06" />
+    <xacro:property name="calf_torque_max" value="35.55" />
+</robot>
