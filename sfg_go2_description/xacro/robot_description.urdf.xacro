@@ -45,7 +45,7 @@
 
     <!-- tracker -->
     <xacro:htc_vive_tracker_30 name="tracker" parent="head_assembly_mount">
-        <origin rpy="0 0 0" xyz="0 0 0.016" />
+        <origin rpy="0 0 0" xyz="0 0 0.0337" />
     </xacro:htc_vive_tracker_30>
 
     <!-- extension dock -->
