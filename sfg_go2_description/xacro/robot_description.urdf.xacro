@@ -43,8 +43,8 @@
         <origin rpy="0 ${0.5 * pi} 0" xyz="0.06081 0.00001 0.00946" />
     </xacro:intel_realsense_d435>
 
-    <!-- tracker -->
-    <xacro:htc_vive_tracker_30 name="tracker" parent="head_assembly_mount">
+    <!-- tracker head -->
+    <xacro:htc_vive_tracker_30 name="tracker_head" parent="head_assembly_mount">
         <origin rpy="0 0 0" xyz="0 0 0.0337" />
     </xacro:htc_vive_tracker_30>
 
