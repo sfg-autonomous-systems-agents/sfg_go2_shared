@@ -3,7 +3,7 @@
   <xacro:include filename="$(find sfg_go2_description)/xacro/constants.xacro" />
   <xacro:include filename="$(find sfg_go2_description)/xacro/leg.xacro" />
 
-  <xacro:include filename="$(find sfg_peripherals_description)/xacro/htc_vive_tracker_30.xacro" />
+  <xacro:include filename="$(find sfg_peripherals_description)/xacro/base_marker_tree.xacro" />
   <xacro:include filename="$(find sfg_peripherals_description)/xacro/intel_realsense_d435.xacro" />
   <xacro:include filename="$(find sfg_peripherals_description)/xacro/livox_mid360.xacro" />
 
@@ -44,9 +44,9 @@
   </xacro:intel_realsense_d435>
 
   <!-- tracker head -->
-  <xacro:htc_vive_tracker_30 name="tracker_head" parent="head_assembly_mount">
-    <origin rpy="0 0 0" xyz="0 0 0.0337" />
-  </xacro:htc_vive_tracker_30>
+  <xacro:base_marker_tree name="tracker_head" parent="head_assembly_mount">
+    <origin rpy="0 0 0" xyz="0 0 0.01396" />
+  </xacro:base_marker_tree>
 
   <!-- extension dock -->
   <joint name="extension_dock_joint" type="fixed">
