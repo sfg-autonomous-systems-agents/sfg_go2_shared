@@ -21,8 +21,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="${(1 - left) / 2 * pi + left * 0.5 * pi} ${(1 - front) / 2 * pi} 0" />
         <geometry>
-          <mesh filename="package://sfg_go2_description/mesh/hip.glb"
-            scale="1 1 1" />
+          <mesh filename="package://sfg_go2_description/mesh/hip.glb" />
         </geometry>
       </visual>
     </link>
