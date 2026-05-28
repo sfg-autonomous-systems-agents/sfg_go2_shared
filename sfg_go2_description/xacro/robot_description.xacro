@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="go2" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="go2_robot_description" params="name:='base' parent:='' *origin">
+  <xacro:macro name="go2_robot_description" params="name:='base_link' parent:='' *origin">
     <xacro:include filename="$(find sfg_go2_description)/xacro/constants.xacro" />
     <xacro:include filename="$(find sfg_go2_description)/xacro/leg.xacro" />
 
@@ -18,8 +18,9 @@
 
     <link name="${name}">
       <visual>
+        <origin xyz="0 0 0" rpy="${0.5 * pi} 0 0" />
         <geometry>
-          <mesh filename="package://sfg_go2_description/mesh/base.dae" scale="1 1 1" />
+          <mesh filename="package://sfg_go2_description/mesh/base_link.glb" />
         </geometry>
       </visual>
     </link>
@@ -34,48 +35,48 @@
     <joint name="head_assembly_mount_joint" type="fixed">
       <parent link="${name}" />
       <child link="head_assembly_mount" />
-      <origin rpy="0 0.10074 0" xyz="0.24797 0 0.0807" />
+      <origin xyz="0.24797 0 0.0807" rpy="0 0.10074 0" />
     </joint>
 
     <link name="head_assembly_mount">
       <visual>
+        <origin xyz="0 0 0" rpy="${0.5 * pi} 0 ${0.5 * pi}" />
         <geometry>
           <mesh
-            filename="package://sfg_go2_description/mesh/head_assembly_mount.dae"
-            scale="1 1 1" />
+            filename="package://sfg_go2_description/mesh/head_assembly_mount.glb" />
         </geometry>
       </visual>
     </link>
 
     <!-- camera head -->
     <xacro:intel_realsense_d435 name="camera_head" parent="head_assembly_mount">
-      <origin rpy="0 ${0.5 * pi} 0" xyz="0.06081 0.00001 0.00946" />
+      <origin xyz="0.06081 0.00001 0.00946" rpy="0 ${0.5 * pi} 0" />
     </xacro:intel_realsense_d435>
 
     <!-- tracker head -->
     <xacro:base_marker_tree name="tracker_head" parent="head_assembly_mount">
-      <origin rpy="0 0 0" xyz="0 0 0.01396" />
+      <origin xyz="0 0 0.01396" rpy="0 0 0" />
     </xacro:base_marker_tree>
 
     <!-- extension dock -->
     <joint name="extension_dock_joint" type="fixed">
       <parent link="${name}" />
       <child link="extension_dock" />
-      <origin rpy="0 0 0" xyz="-0.01896 0 0.05699" />
+      <origin xyz="-0.01896 0 0.05699" rpy="0 0 0" />
     </joint>
 
     <link name="extension_dock">
       <visual>
+        <origin xyz="0 0 0" rpy="${0.5 * pi} 0 ${0.5 * pi}" />
         <geometry>
-          <mesh filename="package://sfg_go2_description/mesh/extension_dock.dae"
-            scale="1 1 1" />
+          <mesh filename="package://sfg_go2_description/mesh/extension_dock.glb" />
         </geometry>
       </visual>
     </link>
 
     <!-- lidar back -->
     <xacro:livox_mid360 name="lidar_back" parent="extension_dock">
-      <origin rpy="0 0 ${pi}" xyz="-0.0531 0 0.0537" />
+      <origin xyz="-0.0531 0 0.0537" rpy="0 0 ${pi}" />
     </xacro:livox_mid360>
   </xacro:macro>
 </robot>
