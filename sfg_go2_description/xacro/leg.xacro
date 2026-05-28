@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="leg" params="name front left">
     <joint name="${name}_hip_joint" type="revolute">
-      <parent link="base" />
+      <parent link="base_link" />
       <child link="${name}_hip" />
-      <origin rpy="0 0 0" xyz="${front * hip_offset_x} ${left * hip_offset_y} 0" />
+      <origin xyz="${front * hip_offset_x} ${left * hip_offset_y} 0" rpy="0 0 0" />
       <axis xyz="1 0 0" />
 
       <xacro:if value="${left == 1}">
@@ -19,9 +19,9 @@
 
     <link name="${name}_hip">
       <visual>
-        <origin rpy="${(1 - left) / 2 * pi} ${(1 - front) / 2 * pi} 0" xyz="0 0 0 " />
+        <origin xyz="0 0 0" rpy="${(1 - left) / 2 * pi + left * 0.5 * pi} ${(1 - front) / 2 * pi} 0" />
         <geometry>
-          <mesh filename="package://sfg_go2_description/mesh/hip.dae"
+          <mesh filename="package://sfg_go2_description/mesh/hip.glb"
             scale="1 1 1" />
         </geometry>
       </visual>
@@ -30,7 +30,7 @@
     <joint name="${name}_thigh_joint" type="revolute">
       <parent link="${name}_hip" />
       <child link="${name}_thigh" />
-      <origin rpy="0 0 0" xyz="0 ${left * thigh_offset_y} 0" />
+      <origin xyz="0 ${left * thigh_offset_y} 0" rpy="0 0 0" />
       <axis xyz="0 1 0" />
 
       <limit effort="${thigh_torque_max}" velocity="${thigh_velocity_max}"
@@ -39,8 +39,9 @@
 
     <link name="${name}_thigh">
       <visual>
+        <origin xyz="0 0 0" rpy="${left * 0.5 * pi} 0 0" />
         <geometry>
-          <mesh filename="package://sfg_go2_description/mesh/thigh.dae"
+          <mesh filename="package://sfg_go2_description/mesh/thigh.glb"
             scale="1 ${left} 1" />
         </geometry>
       </visual>
@@ -49,7 +50,7 @@
     <joint name="${name}_calf_joint" type="revolute">
       <parent link="${name}_thigh" />
       <child link="${name}_calf" />
-      <origin rpy="0 0 0" xyz="0 0 ${-thigh_length}" />
+      <origin xyz="0 0 ${-thigh_length}" rpy="0 0 0" />
       <axis xyz="0 1 0" />
 
       <limit effort="${calf_torque_max}" velocity="${calf_velocity_max}"
@@ -58,8 +59,9 @@
 
     <link name="${name}_calf">
       <visual>
+        <origin xyz="0 0 0" rpy="${left * 0.5 * pi} 0 0" />
         <geometry>
-          <mesh filename="package://sfg_go2_description/mesh/calf.dae"
+          <mesh filename="package://sfg_go2_description/mesh/calf.glb"
             scale="1 ${left} 1" />
         </geometry>
       </visual>
@@ -68,7 +70,7 @@
     <joint name="${name}_foot_joint" type="fixed">
       <parent link="${name}_calf" />
       <child link="${name}_foot" />
-      <origin rpy="0 0 0" xyz="0 0 ${-calf_length}" />
+      <origin xyz="0 0 ${-calf_length}" rpy="0 0 0" />
     </joint>
 
     <link name="${name}_foot" />
